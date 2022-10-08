@@ -35,7 +35,8 @@ namespace BudgetService.Tests
             var result = _service.Query(new DateTime(2022, 10, 1), new DateTime(2022, 10, 31));
 
             result.Should().Be(3100);
-        } 
+        }
+        
         [Test]
         public void Query_One_Day()
         {
@@ -51,6 +52,28 @@ namespace BudgetService.Tests
             var result = _service.Query(new DateTime(2022, 10, 1), new DateTime(2022, 10, 1));
 
             result.Should().Be(100);
+        }
+        
+        [Test]
+        public void Query_Cross_Month()
+        {
+            GivenMonthAndAmount(new List<Budget>
+            {
+                new Budget
+                {
+                    YearMonth = new DateTime(2022, 10, 1),
+                    Amount = 3100
+                },
+                new Budget
+                {
+                    YearMonth = new DateTime(2022, 11, 1),
+                    Amount = 300
+                },
+            });
+
+            var result = _service.Query(new DateTime(2022, 10, 31), new DateTime(2022, 11, 2));
+
+            result.Should().Be(100 + 20);
         }
 
         private ConfiguredCall GivenMonthAndAmount(List<Budget> budgets)

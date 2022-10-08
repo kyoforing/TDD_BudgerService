@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions.Primitives;
 
 namespace BudgetService
 {
@@ -15,13 +16,74 @@ namespace BudgetService
 
         public decimal Query(DateTime startDate, DateTime endDate)
         {
-            var days = (endDate - startDate).Days +1;
-            var budget= _budgetRepo.GetAll().First();
+            var totalAmount = 0m;
 
-            var daysInMonth = DateTime.DaysInMonth(budget.YearMonth.Year, budget.YearMonth.Month);
+            var dateRange = new DateRange(startDate, endDate);
 
-            return budget.Amount / daysInMonth * days;
+            while (dateRange.HasNextMonth())
+            {
+                var budget= _budgetRepo.GetAll().FirstOrDefault(date =>
+                {
+                    return date.YearMonth.Year == dateRange.CurrentDate.Year &&
+                           date.YearMonth.Month == dateRange.CurrentDate.Month;
+                }) ?? new Budget();
+                
+                var daysInMonth = DateTime.DaysInMonth(budget.YearMonth.Year, budget.YearMonth.Month);
 
+                totalAmount += budget.Amount / daysInMonth * dateRange.GetDays();
+                
+                dateRange.NextMonth();
+            }
+
+            return totalAmount;
+        }
+    }
+
+    public class DateRange
+    {
+        private readonly DateTime _startDate;
+        private readonly DateTime _endDate;
+        private DateTime _currentDate;
+
+        public DateTime CurrentDate
+        {
+            private set => _currentDate = value;
+            get => _currentDate;
+        }
+        
+        public DateRange(DateTime startDate, DateTime endDate)
+        {
+            _startDate = startDate;
+            _endDate = endDate;
+            CurrentDate = new DateTime(_startDate.Year, _startDate.Month, 1);
+        }
+
+        public bool HasNextMonth()
+        {
+            return CurrentDate.Month <= _endDate.Month;
+        }
+
+        public void NextMonth()
+        {
+            CurrentDate = CurrentDate.AddMonths(1);
+        }
+
+        public int GetDays()
+        {
+            var daysInMonth = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
+
+            if (CurrentDate.Month == _endDate.Month)
+            {
+                return _endDate.Day;
+            }
+            else if (CurrentDate.Month == _startDate.Month)
+            {
+                return daysInMonth - _startDate.Day + 1;
+            }
+            else
+            {
+                return daysInMonth;
+            }
         }
     }
 
