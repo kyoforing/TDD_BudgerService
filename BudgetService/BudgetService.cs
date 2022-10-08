@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BudgetService
 {
@@ -14,7 +15,13 @@ namespace BudgetService
 
         public decimal Query(DateTime startDate, DateTime endDate)
         {
-            return 0;
+            var days = (endDate - startDate).Days +1;
+            var budget= _budgetRepo.GetAll().First();
+
+            var daysInMonth = DateTime.DaysInMonth(budget.YearMonth.Year, budget.YearMonth.Month);
+
+            return budget.Amount / daysInMonth * days;
+
         }
     }
 
@@ -25,7 +32,7 @@ namespace BudgetService
 
     public class Budget
     {
-        public string YearMonth { get; set; }
+        public DateTime YearMonth { get; set; }
         public decimal Amount { get; set; }
     }
 }

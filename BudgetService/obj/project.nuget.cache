@@ -1,8 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "2j4I/GR6uF9R7hUWcRRUnO2Q+dmkMZduV0dgJ+kBJ7bLA11VYUW3JFpZfC7M8NJTWl7QlnxatvRSg0FPOsIDQg==",
+  "dgSpecHash": "VVer6PWhtH6IgJOGIbTkg3Quxzy/etYpCt7I1gadhQdfSJ9FrbNFLVaXl/sHUfjWNC5Ua9QI5oDDGOLSm1xkoQ==",
   "success": true,
   "projectFilePath": "C:\\TDD\\BudgetService\\BudgetService\\BudgetService.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\fluentassertions\\6.7.0\\fluentassertions.6.7.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\nsubstitute\\4.4.0\\nsubstitute.4.4.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.0\\system.configuration.configurationmanager.4.4.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.diagnostics.eventlog\\4.7.0\\system.diagnostics.eventlog.4.7.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.4.0\\system.security.cryptography.protecteddata.4.4.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\kyo.cheng15\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512"
+  ],
   "logs": []
 }
