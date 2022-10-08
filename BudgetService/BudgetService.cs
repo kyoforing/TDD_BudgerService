@@ -72,11 +72,11 @@ namespace BudgetService
         {
             var daysInMonth = DateTime.DaysInMonth(CurrentDate.Year, CurrentDate.Month);
 
-            if (CurrentDate.Month == _endDate.Month)
+            if (CurrentDate.Month == _endDate.Month && CurrentDate.Year == _endDate.Year)
             {
                 return _endDate.Day;
             }
-            else if (CurrentDate.Month == _startDate.Month)
+            else if (CurrentDate.Month == _startDate.Month && CurrentDate.Year == _startDate.Year)
             {
                 return daysInMonth - _startDate.Day + 1;
             }
