@@ -75,6 +75,33 @@ namespace BudgetService.Tests
 
             result.Should().Be(100 + 20);
         }
+        
+        [Test]
+        public void Query_Cross_Three_Month()
+        {
+            GivenMonthAndAmount(new List<Budget>
+            {
+                new Budget
+                {
+                    YearMonth = new DateTime(2022, 11, 1),
+                    Amount = 3000
+                },
+                new Budget
+                {
+                    YearMonth = new DateTime(2022, 12, 1),
+                    Amount = 310
+                },
+                new Budget
+                {
+                    YearMonth = new DateTime(2023, 1, 1),
+                    Amount = 31
+                },
+            });
+
+            var result = _service.Query(new DateTime(2022, 11, 29), new DateTime(2023, 1, 3));
+
+            result.Should().Be(200 + 310 + 3);
+        }
 
         private ConfiguredCall GivenMonthAndAmount(List<Budget> budgets)
         {

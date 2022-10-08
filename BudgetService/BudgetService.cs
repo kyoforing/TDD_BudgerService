@@ -60,7 +60,7 @@ namespace BudgetService
 
         public bool HasNextMonth()
         {
-            return CurrentDate.Month <= _endDate.Month;
+            return CurrentDate <= _endDate;
         }
 
         public void NextMonth()
